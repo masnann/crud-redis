@@ -7,5 +7,5 @@ type PingRepositoryInterface interface {
 }
 
 type CarsRepositoryInterface interface {
-	GetCarsByIndex(id int) (models.Cars, error)
+	FindCarsByID(id int) (models.Cars, error)
 }

@@ -10,4 +10,6 @@ const (
 
 	SYSTEM_ERROR_CODE    = "501"
 	UNDEFINED_ERROR_CODE = "502"
+
+	EMPTY_CODE = ""
 )
