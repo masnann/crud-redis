@@ -17,7 +17,7 @@ func BindAndValidateStruct(ctx echo.Context, i interface{}) error {
 	return nil
 }
 
-func ResponseJSON(code, message string, success bool, result interface{}) models.Response {
+func ResponseJSON(success bool, code, message string, result interface{}) models.Response {
 	response := models.Response{
 		StatusCode:       code,
 		Success:          success,

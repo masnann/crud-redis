@@ -36,7 +36,7 @@ func carsDto(rows *sql.Rows) ([]models.Cars, error) {
 
 }
 
-func (r CarsRepository) GetCarsByIndex(id int) (models.Cars, error) {
+func (r CarsRepository) FindCarsByID(id int) (models.Cars, error) {
 	var cars models.Cars
 
 	query := `SELECT ` + defineColumn + ` FROM cars WHERE id = $1`
@@ -50,7 +50,7 @@ func (r CarsRepository) GetCarsByIndex(id int) (models.Cars, error) {
 
 	data, err := carsDto(rows)
 	if len(data) == 0 {
-		log.Println("Error carsDto GetCarsByIndex: ", err)
+		log.Println("Error carsDto FindCarsByID: ", err)
 		return cars, errors.New("cars not found")
 	}
 	return data[0], nil
