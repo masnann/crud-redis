@@ -9,3 +9,7 @@ type PingRepositoryInterface interface {
 type CarsRepositoryInterface interface {
 	FindCarsByID(id int) (models.Cars, error)
 }
+
+type RedisRepositoryInterface interface {
+	InsertDataRedis(key string, data interface{}) error
+}

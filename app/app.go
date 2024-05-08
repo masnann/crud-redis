@@ -4,6 +4,7 @@ import (
 	"crud-redis/repository"
 	"crud-redis/repository/carsRepository"
 	"crud-redis/repository/pingRepository"
+	"crud-redis/repository/redisRepository"
 	"crud-redis/service"
 	"database/sql"
 )
@@ -11,8 +12,9 @@ import (
 func SetupApp(DB *sql.DB, repo repository.Repository) service.Service {
 	pingRepo := pingRepository.NewPingRespository(repo)
 	carsRepo := carsRepository.NewCarsRepository(repo)
+	redisRepo := redisRepository.NewRedisRepository(repo)
 
-	service := service.NewService(DB, pingRepo, carsRepo)
+	service := service.NewService(DB, pingRepo, carsRepo, redisRepo)
 
 	return service
 }
