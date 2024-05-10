@@ -4,6 +4,7 @@ import (
 	"context"
 	"crud-redis/repository"
 	"encoding/json"
+	"time"
 )
 
 type RedisRepository struct {
@@ -22,14 +23,11 @@ func (r RedisRepository) InsertDataRedis(key string, data interface{}) error {
 		return err
 	}
 
-   err = r.repo.RDB.Set(context.Background(), key, jsonData, 0).Err()
-   if err != nil {
-	 return err
-   }
+	ttl := 10 * time.Second
+	err = r.repo.RDB.Set(context.Background(), key, jsonData, ttl).Err()
+	if err != nil {
+		return err
+	}
 
-   return nil
+	return nil
 }
-
-
-
-
