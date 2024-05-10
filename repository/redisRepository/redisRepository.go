@@ -31,3 +31,13 @@ func (r RedisRepository) InsertDataRedis(key string, data interface{}) error {
 
 	return nil
 }
+
+func (r RedisRepository) GetDataRedis(key string) ([]byte, error) {
+	val, err := r.repo.RDB.Get(context.Background(), key).Bytes()
+	if err != nil {
+		return nil, err
+	}
+
+	return val, nil
+
+}

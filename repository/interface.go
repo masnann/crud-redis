@@ -13,5 +13,5 @@ type CarsRepositoryInterface interface {
 
 type RedisRepositoryInterface interface {
 	InsertDataRedis(key string, data interface{}) error
-	
+	GetDataRedis(key string) ([]byte, error)
 }
