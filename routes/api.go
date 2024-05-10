@@ -18,4 +18,5 @@ func ApiRoutes(e *echo.Echo, srv service.Service) {
 	cars := carsService.NewCarsService(srv)
 	carsGroup := public.Group("/cars")
 	carsGroup.GET("/:id", cars.FindCarsByID)
+	carsGroup.POST("/", cars.GetAllCars)
 }
