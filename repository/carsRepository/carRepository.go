@@ -56,3 +56,22 @@ func (r CarsRepository) FindCarsByID(id int) (models.Cars, error) {
 	return data[0], nil
 }
 
+func (r CarsRepository) GetAllCars() ([]models.Cars, error) {
+	query := `SELECT ` + defineColumn + ` FROM cars`
+
+	rows, err := r.repo.DB.Query(query)
+	if err != nil {
+		log.Println("Error query: ", err)
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	data, err := carsDto(rows)
+	if len(data) == 0 {
+		log.Println("Error carsDto")
+		return nil, err 
+	}
+	return data, nil
+	
+}
